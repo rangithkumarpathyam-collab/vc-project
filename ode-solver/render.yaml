@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ode-solver-backend
+    env: node
+    buildCommand: "cd backend && npm install && npm run build && python -m venv venv && ./venv/bin/pip install sympy numpy"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGO_URI
+        sync: false # Set this in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
